@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABDU Software & Business Center | Your Success, Our Priority</title>
+    <!-- Google Fonts for professional typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for professional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS VARIABLES */
+        :root {
+            --primary: #0b3d91; /* Deep Professional Blue */
+            --primary-light: #1e5bc6;
+            --secondary: #1a8f5a; /* Green for Research */
+            --accent-purple: #682b9b;
+            --accent-orange: #d95a11;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --bg-light: #f7fafc;
+            --white: #ffffff;
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 25px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        /* RESET */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--text-main); background-color: var(--bg-light); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* NAVIGATION BAR */
+        nav {
+            background-color: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-brand { display: flex; align-items: center; gap: 12px; }
+        
+        .nav-logo-box {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1.5rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-text h1 { font-size: 1.2rem; color: var(--primary); font-weight: 800; line-height: 1.1; }
+        .nav-text p { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+
+        .nav-links { display: flex; gap: 2rem; font-weight: 600; font-size: 0.95rem; }
+        .nav-links a { transition: var(--transition); position: relative; }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
+            background-color: var(--primary); transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #e0ebff 0%, #ffffff 100%);
+            padding: 6rem 5% 4rem;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-tagline {
+            display: inline-block;
+            background-color: rgba(11, 61, 145, 0.1);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* SERVICES SECTION */
+        .services-section {
+            padding: 5rem 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* SERVICE GRID */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid #edf2f7;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Top colored border on hover */
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            transition: var(--transition);
+        }
+        .card-blue::before { background-color: var(--primary); }
+        .card-green::before { background-color: var(--secondary); }
+        .card-purple::before { background-color: var(--accent-purple); }
+        .card-orange::before { background-color: var(--accent-orange); }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .card-blue .service-icon { color: var(--primary); }
+        .card-green .service-icon { color: var(--secondary); }
+        .card-purple .service-icon { color: var(--accent-purple); }
+        .card-orange .service-icon { color: var(--accent-orange); }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .service-card ul {
+            margin-top: auto;
+        }
+
+        .service-card li {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-card li i {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            color: var(--primary-light);
+            font-size: 0.8rem;
+        }
+
+        /* SPECIAL STYLING FOR ETHIO CODERS */
+        .ethio-coders-box {
+            background: linear-gradient(135deg, #fff6ef 0%, #ffffff 100%);
+        }
+        
+        .ethio-logo-badge {
+            display: inline-block;
+            background-color: var(--accent-orange);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* WHY CHOOSE US SECTION */
+        .why-us {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 5rem 5%;
+            text-align: center;
+            position: relative;
+        }
+
+        .why-us h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            padding: 2rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .feature-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #a5c2f8;
+        }
+
+        .feature-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            padding: 5rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-box {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            padding: 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #edf2f7;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-text h4 {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-text .phone-numbers {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        .contact-tagline {
+            max-width: 300px;
+            text-align: right;
+            font-weight: 500;
+            color: var(--text-muted);
+            font-style: italic;
+            border-left: 3px solid var(--primary-light);
+            padding-left: 1.5rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 900px) {
+            .contact-box {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            .contact-info {
+                flex-direction: column;
+            }
+            .contact-tagline {
+                text-align: center;
+                border-left: none;
+                border-top: 3px solid var(--primary-light);
+                padding-left: 0;
+                padding-top: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; /* In a real deployment, add a hamburger menu here */ }
+            .nav-text h1 { font-size: 1rem; }
+            .nav-text p { font-size: 0.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-brand">
+            <div class="nav-logo-box">AB</div>
+            <div class="nav-text">
+                <h1>ABDU</h1>
+                <p>Software & Business Center</p>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#why-us">Why Us</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="home" class="hero">
+        <span class="hero-tagline">Your Success, Our Priority</span>
+        <h1>Software, Research & Digital Innovation</h1>
+        <p>We provide professional software installation, academic research support, and full-stack digital solutions to help students and businesses thrive in the modern digital era.</p>
+    </header>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services-section">
+        <div class="section-header">
+            <h2>Our Core Services</h2>
+            <p>Comprehensive solutions tailored to your academic and business needs.</p>
+        </div>
+
+        <div class="services-grid">
+            
+            <!-- Service 1 -->
+            <div class="service-card card-blue">
+                <i class="fa-solid fa-laptop-code service-icon"></i>
+                <h3>Software Sales & Installation</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Microsoft Office 2016, 2019, 2021 & 2024</li>
+                    <li><i class="fa-solid fa-check"></i> Windows 7, 10 & 11</li>
+                    <li><i class="fa-solid fa-check"></i> Adobe Premiere Pro, After Effects & graphics software</li>
+                    <li><i class="fa-solid fa-check"></i> AutoCAD, SketchUp, 3ds Max & architectural software</li>
+                    <li><i class="fa-solid fa-check"></i> Avast, Smadav, 360 Total Security & antivirus solutions</li>
+                </ul>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card card-green">
+                <i class="fa-solid fa-graduation-cap service-icon"></i>
+                <h3>Academic Research & Proposals</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Research proposals for college & university students</li>
+                    <li><i class="fa-solid fa-check"></i> Research project preparation and formatting</li>
+                    <li><i class="fa-solid fa-check"></i> Academic document editing and presentation support</li>
+                    <li><i class="fa-solid fa-check"></i> Computer Science project guidance</li>
+                </ul>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card card-purple">
+                <i class="fa-solid fa-mobile-screen-button service-icon"></i>
+                <h3>App & Website Development</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Mobile application development</li>
+                    <li><i class="fa-solid fa-check"></i> Website design and development</li>
+                    <li><i class="fa-solid fa-check"></i> Computer Science student projects</li>
+                    <li><i class="fa-solid fa-check"></i> Digital solutions for businesses and individuals</li>
+                </ul>
+            </div>
+
+            <!-- Service 4 (Ethio Coders) -->
+            <div class="service-card card-orange ethio-coders-box">
+                <i class="fa-solid fa-code service-icon"></i>
+                <h3>Ethio Coders</h3>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.5rem;">We make for you</p>
+                <h4 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 0.5rem;">Ethio Coders Assignments</h4>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">Completed with official certification.</p>
+                <div class="ethio-logo-badge">
+                    <i class="fa-solid fa-code-branch"></i> ETHIO CODERS
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section id="why-us" class="why-us">
+        <h2>Why Choose Us?</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fa-solid fa-user-tie"></i>
+                <h4>Professional Service</h4>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-headset"></i>
+                <h4>Reliable Technical Support</h4>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <h4>Affordable Solutions</h4>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-award"></i>
+                <h4>Quality-Focused Work</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact-section">
+        <div class="contact-box">
+            <div class="contact-info">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-phone-volume"></i>
+                </div>
+                <div class="contact-text">
+                    <h4>Contact Us Today</h4>
+                    <div class="phone-numbers">0969481003 / 0716528416</div>
+                </div>
+            </div>
+            <div class="contact-tagline">
+                "Your Trusted Partner for Software, Research & Digital Innovation."
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024 ABDU Software & Business Center. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
